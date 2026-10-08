@@ -1,1 +1,2 @@
 # ASSC
+ASSC stands for Automated Spin Spiral Calculations and generates input files that describe spin-propagation vectors along a given path. It then runs Slurm jobs, collects spin-spiral energies, and uses them to calculate desired magnetic properties, such as the exchange parameter, magnon dispersion, and the system's Curie temperature. The calculations are performed in VASP within the self-consistent field framework.
