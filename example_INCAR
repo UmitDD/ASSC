@@ -1,0 +1,40 @@
+#Electronic Relaxation 1
+PREC   = Accurate
+ENINI  = 400
+ENMAX  = 500
+NELM   = 100
+NELMIN = 5
+EDIFF  = 1E-06
+EDIFFG = -0.01
+
+#Ionic Relaxation
+NSW    = 0
+IBRION = -1
+
+#Dos related values
+ISMEAR = -5
+ICHARG = 2
+
+#Electronic Relaxation 2
+ALGO   = Fast
+LREAL  = F
+
+#Spin Spirals
+ISYM = 0
+ISPIN = 1
+LNONCOLLINEAR = T
+LASPH = T
+LSPIRAL = T
+LZEROZ = F
+LSORBIT = F
+
+# LDA tag
+VOSKOWN =1
+#Constraint Tags
+I_CONSTRAINED_M = 2
+LAMBDA = 5
+RWIGS = 1.385
+LWAVE = F
+LCHARG = F
+
+# Initial magnetic moments
