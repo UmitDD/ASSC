@@ -35,7 +35,7 @@ After *executor.sh* runs, the ICL is ready to accept commands to set up input fi
 ```
 [hpc a1_run]$ ./executor.sh
 ==========Now you will provide information that generates INCAR files for Spin-Spiral Calculations=======
-Enter Number of magnetic basis interactions in the unit cell: 3
+Enter the Number of magnetic basis interactions in the unit cell: 3
 Enter position index of magnetic atom in unit-cell for each basis interaction : [[0,2],[0,2]]
 Enter file name including propagation vectors: propagations.csv
 Enter lattice constant of unit-cell: 5.99
@@ -48,6 +48,10 @@ Enter file name of output INCAR (e.g incar_ss): incar_ss
 Enter SS energy as a function of phase 90 between magnetic basis: -24.41208464
 Enter positional differences of two magnetic basis (0.25,0.25,0.25)
 ```
-To show the user what the enter command lines, the Ni2MnGa Heusler alloy structure will be the demonstration subject. 
+To show the user what the enter command lines do, we will use the Ni2MnGa Heusler alloy structure as the demonstration subject. 
 
-The primitive unit cell of Ni2MnGa has two magnetic basis atoms, Ni and Mn. 
+The primitive unit cell of Ni2MnGa has two magnetic basis atoms, Ni and Mn. Therefore, there are 3 magnetic interaction bases: Ni-Ni, Mn-Mn, and Mn-Ni:
+```
+Enter the number of magnetic basis interactions in the unit cell: 3
+```
+The magnetic atom positions (Ni, Mn) in the Ni2MnGa POSCAR are 0 (1) and 2 for Ni and Mn. One Ni is sufficient to represent the magnetic basis of Ni. First magnetic interaction is between Ni-Ni, where the index is 0 
