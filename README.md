@@ -34,18 +34,20 @@ bcc-Fe
 After *executor.sh* runs, the ICL is ready to accept commands to set up input files. The ICL:
 ```
 [hpc a1_run]$ ./executor.sh
-==========Now You will provide information that generate INCAR files for Spin-Spiral Calculations=======
-Enter Number of magnetic basis interaction in unit-cell: 3
+==========Now you will provide information that generates INCAR files for Spin-Spiral Calculations=======
+Enter Number of magnetic basis interactions in the unit cell: 3
 Enter position index of magnetic atom in unit-cell for each basis interaction : [[0,2],[0,2]]
-Enter file name include propagation vectors: propagations.csv
+Enter file name including propagation vectors: propagations.csv
 Enter lattice constant of unit-cell: 5.99
 Enter name of Bravais lattice: fcc
 Enter atomic types (e.g atom1->[0], atom1,atom2->[0,1]): [1,1,2,3]
 Enter unfolding mesh of IBZ points (e.g [10,10,10]): [10,10,10]
 Enter Scaling factor of energy, meV or mRy: meV
 Enter file name of output INCAR (e.g incar_ss): incar_ss
-==========Enter these two attribute if there is more than one magnetic basis in the system. Otherwise you might give 0=======
-Enter SS energy as function of phase 90 between magnetic basis: -24.41208464
+==========Enter these two attributes if there is more than one magnetic basis in the system. Otherwise, you might give 0=======
+Enter SS energy as a function of phase 90 between magnetic basis: -24.41208464
 Enter positional differences of two magnetic basis (0.25,0.25,0.25)
-
 ```
+To show the user what the enter command lines, the Ni2MnGa Heusler alloy structure will be the demonstration subject. 
+
+The primitive unit cell of Ni2MnGa has two magnetic basis atoms, Ni and Mn. 
