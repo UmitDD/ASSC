@@ -10,8 +10,8 @@ pip install -r pip_requirements.txt
 Transfer the two Python files, one bash script and five base files to the working directory. The working directory design:
 ```
 bcc-Fe
-├── Exchange_calculator.py
 ├── Input_generator.py
+├── Exchange_calculator.py
 ├── executor.sh
 ├── example_INCAR
 ├── example_scr
@@ -20,3 +20,6 @@ bcc-Fe
 ├── const_data
 └── propagations.csv    
 ```
+**`sample`**
+**`Exchange_calculator.py`**: 
+**`Exchange_calculator.py`**`: 
