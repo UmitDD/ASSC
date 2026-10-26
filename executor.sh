@@ -1,22 +1,23 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-echo "==========Now You will provide information that generate INCAR files for Spin-Spiral Calculations======="
-read -p "Enter Number of magnetic basis interaction in unit-cell: " basis
-read -p "Enter file name include propagation vectors: " pro_vectors
+echo "==========Now you will provide information that generates INCAR files for Spin-Spiral Calculations======="
+read -p "Enter the number of magnetic basis interactions in the unit cell: " basis
+read -p "Enter position index of magnetic atom in unit-cell for each basis interaction: " mag_basis
+read -p "Enter file name including propagation vectors: " pro_vectors
 read -p "Enter lattice constant of unit-cell: " lat_cont
 read -p "Enter name of Bravais lattice: " system
-read -p "Enter magnetic moments list (e.g [[interaction 1->[m1x,m1y,m1z],[m2x,m2y,m2z]], interaction 2->[[m'1x,m'1y,m'1z],[m'2x,m'2y,m'2z]]]): " mag_moment
-read -p "Enter constrained list (e.g magnetic moment list format): " const_moment
-read -p "Enter fractional atomic positions (e.g [[p1x,p1y,p1z]]): " positions
-read -p "Enter atomic types (e.g atom1->0, atom2->1): " types
-read -p "Enter unfolding mesh of IBZ points (e.g [10,10,10]): " mesh
-read -p "Enter Scaling factor of energy, mev or mRy: " scaling_factor
+read -p "Enter atomic types: " types
+read -p "Enter unfolding mesh of IBZ points: " mesh
+read -p "Enter scaling factor of energy, meV or mRy: " scaling_factor
 read -p "Enter file name of output INCAR (e.g incar_ss): " file_name
-read -p "Enter number repeat for Job submission:" repeat
+echo "==========Enter these two attributes if there is more than one magnetic basis in the system. Otherwise, you might give 0======="
+read -p "Enter SS energy as a function of 90 degrees magnetic moment phase between magnetic basis: " enSS90
+read -p "Enter positional differences of two magnetic basis: " delta
+read -p "Enter number of repeats for Job submission: " repeat
 
 source /home/users/daglum1/p_python/a_library/myenv/bin/activate
-python3 Input_generator.py "$basis" "$pro_vectors" "$lat_cont" "$system" "$mag_moment" "$const_moment" "$file_name" || { echo "Sorry Input generation failed" >&2; exit 1; }
+python3 Input_generator.py "$basis" "$pro_vectors" "$lat_cont" "$system" "$file_name" || { echo "Sorry Input generation failed" >&2; exit 1; }
 
 job_ids=()
 
@@ -47,4 +48,4 @@ for ((index=1; index<=basis; index++)); do
 done
 
 source /home/users/daglum1/p_python/a_library/myenv/bin/activate
-python3 Magnetic_script.py "$basis" "$lat_cont" "$system" "$positions" "$types" "$mesh" "$scaling_factor" || { echo "Sorry Magnetic_script failed" >&2;}
+python3 Exchange_calculator.py "$basis" "$system" "$delta" "$types" "$mesh" "$scaling_factor" "$mag_basis" "$enSS90" || { echo "Sorry Magnetic_script failed" >&2;}

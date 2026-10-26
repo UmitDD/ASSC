@@ -36,7 +36,7 @@ def rec(ai, aj, ak):
     b = 2 * np.pi * (np.cross(aj, ak) / (np.dot(ai, np.cross(aj, ak))))
     return b
 
-def incar_generate(basis,pro_vectors,lat_cont,system,mag_moment,const_moment,file_name):
+def incar_generate(basis,pro_vectors,lat_cont,system,file_name):
     """
 
     :param basis: Number of magnetic basis interaction in the unit-cell. -Int-
@@ -83,12 +83,20 @@ def incar_generate(basis,pro_vectors,lat_cont,system,mag_moment,const_moment,fil
     with open("example_cat.sh", "r") as cat:
         content_cat = cat.read()
 
+    # ==== Read Magnetic moments and their constraint values from file ==== #
+    mag_moment = np.loadtxt("mag_data")
+    const_moment = np.loadtxt("const_data")
     for at in range(1,basis+1):
         path = './INCAR_files_basis' + str(at)
         os.makedirs(path, exist_ok=True)
 
-        const = " ".join(str(c) for con in const_moment[at-1] for c in con)
-        mag = " ".join(str(m) for magm in mag_moment[at-1] for m in magm)
+        if basis>1:
+            const = " ".join(str(c) for c in const_moment[at-1])
+            mag = " ".join(str(m) for m in mag_moment[at-1])
+
+        else:
+            const = " ".join(str(c) for c in const_moment)
+            mag = " ".join(str(m) for m in mag_moment)
 
         lines = [f"M_CONSTR={const}\n",
                 f"MAGMOM={mag}\n" ]
@@ -181,8 +189,6 @@ if __name__=="__main__":
     pro_vectors = sys.argv[2]
     lat_cont = float(sys.argv[3])
     system = str(sys.argv[4])
-    mag_moment = ast.literal_eval(sys.argv[5])
-    const_moment = ast.literal_eval(sys.argv[6])
-    file_name = sys.argv[7]
+    file_name = sys.argv[5]
 
-    incar_generate(basis, pro_vectors, lat_cont, system, mag_moment, const_moment, file_name)
+    incar_generate(basis, pro_vectors, lat_cont, system, file_name)
