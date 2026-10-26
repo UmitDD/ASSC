@@ -31,7 +31,7 @@ bcc-Fe
 **`propagations.csv`**: This file includes the spin spiral propagation path that the user selected. Column arrangement: [qx,qy,qz]
 
 ## Interactive Command Line (ICL)
-After *executor.sh* runs, the ICL is ready to accept commands to set up input files. The ICL setup for the Ni2MnAl system:
+After *executor.sh* runs, the ICL is ready to accept commands to set up input files. The ICL setup for the Ni2MnGa system:
 ```
 [hpc a1_run]$ ./executor.sh
 ==========Now you will provide information that generates INCAR files for Spin-Spiral Calculations=======
