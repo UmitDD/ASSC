@@ -44,9 +44,6 @@ def incar_generate(basis,pro_vectors,lat_cont,system,file_name):
     propagation vectors are fractional reciprocal lattice of primitive unit-cell. -String-
     :param lat_cont: Lattice constant. -Float-
     :param system: Type of Bravais lattice (e.g: fcc, bcc). -String-
-    :param mag_moment:
-    :param const_moment:
-    :param file_name:
     :return:
     """
     # ==== Propagation Vectors Input Files ==== #
