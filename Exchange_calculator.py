@@ -413,42 +413,13 @@ def exchange_fourier(basis,system,delta,types,mesh,scaling_factor,mag_basis,enSS
             plt.legend(prop={'family': 'sans-serif', 'size': 9.5}, loc='upper right', frameon=True,
                        framealpha=1, edgecolor="none")
 
-            # # Add "bcc" label to the top-left corner (inside the plot)
-            # ax.text(
-            #     x=0.2,
-            #     y=0.95,
-            #     s='Name',
-            #     transform=ax.transAxes,
-            #     fontsize=12,
-            #     fontfamily='sans-serif',
-            #     ha='left',
-            #     va='top'
-            # )
 
             for line in ax.lines:
                 line.set_clip_on(False)  # Disable clipping for markers at plot edges
             plt.savefig("output_basis"+str(bs)+"/"+"Exchange_graph.png", dpi=600, bbox_inches='tight', transparent=False)
 
 
-        # ==== Curie Temperature Calculation =====#
-        # K_B = 0.0861733  # Kelvin over meV
-        #
-        # # ==== MFA- First equation --->KB*T_c = 2/3 * M**2 * Sum_j J_0j ==== #
-        # eq1 = (2 / 3) * sum(J_ij_real)
-        # Tc_MFA = eq1/K_B
-        # print(f"Tc_MFA {Tc_MFA}")
-        # # ==== RPA- Second equation ----> (T_c)^{-1} = 3KB/2N * sum sin^{2}(theta)/E(q)-E(0) ==== #
-        # eq2 = []
-        # for i in range(1, len(qx)):
-        #     eq2.append((3 * K_B / (2 * len(qx))) *
-        #                ((np.sin(math.radians(theta) ** 2) /
-        #                 (energy_ss[i] - energy_ss[0]))))
-        #
-        # Tc_RPA= (1 / sum(eq2)) * 1000
-        # print(f"Tc_RPA {Tc_RPA}")
-        # data_Tc = pd.DataFrame([[Tc_MFA,Tc_RPA]], columns=["MFA", "RPA"])
-        # data_Tc.to_csv("output_basis" + str(bs) +"/"+"Tc_results", index=False)
-
+    
 
 if __name__ =="__main__":
     basis = int(sys.argv[1])
