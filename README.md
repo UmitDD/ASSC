@@ -45,7 +45,7 @@ Enter unfolding mesh of IBZ points: [10,10,10]
 Enter Scaling factor of energy, meV or mRy: meV
 Enter file name of output INCAR (e.g incar_ss): incar_ss
 ==========Enter these two attributes if there is more than one magnetic basis in the system. Otherwise, you might give 0=======
-Enter SS energy as a function of phase 90 between magnetic basis: -24.41208464
+Enter SS energy as a function of 90 degrees magnetic moment phase between magnetic basis: -24.41208464
 Enter positional differences of two magnetic basis: (0.25,0.25,0.25)
 ```
 To show the user what the enter command lines do, we will use the Ni2MnGa Heusler alloy structure as the demonstration subject. 
@@ -58,3 +58,8 @@ The magnetic atom positions (Ni, Mn) in the Ni2MnGa POSCAR are 0 (Ni) and 2 (Mn)
 ```
 Enter position index of magnetic atom in unit-cell for each basis interaction : [[0,2],[0,2]]
 ```
+The *unfolding mesh* list should match all propagation points before being folded along the irreducible Brillouin zone. For example, 1000 propagation points fold into 47 special propagation points due to fcc symmetry. The ICL asks the user how many unfoldings will apply along the x, y and z directions. In the case of 1000 propagation points of the fcc Bravais lattice system:
+```
+Enter unfolding mesh of IBZ points: [10,10,10]
+```
+
