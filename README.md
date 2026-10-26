@@ -28,7 +28,7 @@ bcc-Fe
 **`example_cat`**: This file is the base file to use for generating energy-merging cat bash scripts. \
 **`mag_data`**: This file includes the converged magnetic moment of each atom in the system. \
 **`const_data`**: This file includes the constrained vectors of the converged magnetic moment of each atom in the system. \
-**`propagations.csv`**: This file includes the spin spiral propagation path that the user selected.
+**`propagations.csv`**: This file includes the spin spiral propagation path that the user selected. Column arrangement: [qx,qy,qz]
 
 ## Interactive Command Line (ICL)
 After *executor.sh* runs, the ICL is ready to accept commands to set up input files. The ICL:
@@ -40,13 +40,13 @@ Enter position index of magnetic atom in unit-cell for each basis interaction : 
 Enter file name including propagation vectors: propagations.csv
 Enter lattice constant of unit-cell: 5.99
 Enter name of Bravais lattice: fcc
-Enter atomic types (e.g atom1->[0], atom1,atom2->[0,1]): [1,1,2,3]
-Enter unfolding mesh of IBZ points (e.g [10,10,10]): [10,10,10]
+Enter atomic types: [1,1,2,3]
+Enter unfolding mesh of IBZ points: [10,10,10]
 Enter Scaling factor of energy, meV or mRy: meV
 Enter file name of output INCAR (e.g incar_ss): incar_ss
 ==========Enter these two attributes if there is more than one magnetic basis in the system. Otherwise, you might give 0=======
 Enter SS energy as a function of phase 90 between magnetic basis: -24.41208464
-Enter positional differences of two magnetic basis (0.25,0.25,0.25)
+Enter positional differences of two magnetic basis: (0.25,0.25,0.25)
 ```
 To show the user what the enter command lines do, we will use the Ni2MnGa Heusler alloy structure as the demonstration subject. 
 
@@ -54,4 +54,7 @@ The primitive unit cell of Ni2MnGa has two magnetic basis atoms, Ni and Mn. Ther
 ```
 Enter the number of magnetic basis interactions in the unit cell: 3
 ```
-The magnetic atom positions (Ni, Mn) in the Ni2MnGa POSCAR are 0 (1) and 2 for Ni and Mn. One Ni is sufficient to represent the magnetic basis of Ni. First magnetic interaction is between Ni-Ni, where the index is 0 
+The magnetic atom positions (Ni, Mn) in the Ni2MnGa POSCAR are 0 (Ni) and 2 (Mn). One Ni is sufficient to represent the magnetic basis of Ni. The first magnetic interaction is between Ni-Ni, where the interaction is represented by index 0. The second interaction, Mn-Mn, is represented by index 2. Therefore, intra-lattice Mn-Mn and Ni-Ni interactions are represented by indices 0 and 2, forming the sublist [0,2]. Inter-lattice interaction (Mn-Ni) is represented by the sublist [0,2]. Together, the sublists merge into a list to represent magnetic basis interactions, where there are two magnetic sublattices in the system:
+```
+Enter position index of magnetic atom in unit-cell for each basis interaction : [[0,2],[0,2]]
+```
